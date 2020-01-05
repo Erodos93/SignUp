@@ -36,22 +36,24 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
 
     @Override
+
     public void onClick(View v) {
-        ParseObject kickboxer = new ParseObject("KickBoxer");
-        kickboxer.put("Name",name.getText().toString() );
+        try {
+        final ParseObject kickboxer = new ParseObject("KickBoxer");
+        kickboxer.put("name",name.getText().toString() );
         kickboxer.put("punch_speed", Integer.parseInt(punch_speed.getText().toString()));
         kickboxer.put("punch_power", Integer.parseInt(punch_power.getText().toString()));
         kickboxer.put("power_kick", Integer.parseInt(kick_power.getText().toString()));
         kickboxer.put("kick_speed", Integer.parseInt(kick_speed.getText().toString()));
 
-        try {
+
             kickboxer.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
                     if (e == null) {
-                        FancyToast.makeText(SignUp.this, "Sucessfull", Toast.LENGTH_SHORT,FancyToast.SUCCESS,true).show();
+                        FancyToast.makeText(SignUp.this, kickboxer.get("name")+"is add sucessfull", Toast.LENGTH_SHORT,FancyToast.SUCCESS,true).show();
                     }else{
-                        FancyToast.makeText(SignUp.this, "False "+ e.getMessage(), Toast.LENGTH_SHORT,FancyToast.ERROR,false).show();
+                        FancyToast.makeText(SignUp.this, kickboxer.get("name")+"is add False because "+ e.getMessage(), Toast.LENGTH_SHORT,FancyToast.ERROR,true).show();
                     }
 
                 }
