@@ -24,9 +24,9 @@ import java.util.List;
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     private EditText name, punch_speed, punch_power, kick_power, kick_speed;
-    private Button Enter;
+    private Button Enter,btnGetAllData,btnSwitchActivity;
     private TextView txtGetData;
-    private Button btnGetAllData;
+
 private String allKickBoxer;
     @Override
 
@@ -41,6 +41,7 @@ private String allKickBoxer;
         Enter = (Button) findViewById(R.id.Enter);
         txtGetData=(TextView) findViewById(R.id.txtGetData);
         btnGetAllData=(Button) findViewById(R.id.btnGetAllData);
+        btnSwitchActivity= (Button)findViewById(R.id.btnSwitchActivity);
         Enter.setOnClickListener(SignUp.this);
 
         btnGetAllData.setOnClickListener(new View.OnClickListener() {
